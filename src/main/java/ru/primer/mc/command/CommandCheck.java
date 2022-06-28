@@ -100,10 +100,6 @@ public class CommandCheck implements CommandExecutor {
 
                 List<String> commands = cfg.getStringList("commands");
 
-                for (String commandExecute : commands) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), commandExecute.replace("%player%", targetNameBan));
-                }
-
                 if(!playersChecking.containsKey(targetNameBan) && !playersCheckProgress.containsKey(targetNameBan)) {
                     return true;
                 }
@@ -115,6 +111,11 @@ public class CommandCheck implements CommandExecutor {
                 if(playersCheckProgress.containsKey(targetNameBan)) {
                     playersCheckProgress.remove(targetNameBan);
                 }
+
+                for (String commandExecute : commands) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), commandExecute.replace("%player%", targetNameBan));
+                }
+
                 targetBan.resetTitle();
                 break;
             }

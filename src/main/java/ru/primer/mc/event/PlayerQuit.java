@@ -23,11 +23,16 @@ public class PlayerQuit implements Listener {
 
         player.resetTitle();
 
-        if(!playersChecking.containsKey(playerName)) {
-            return;
+        Player admin = null;
+
+        if(playersChecking.get(playerName) != null) {
+            admin = Bukkit.getPlayerExact(playersChecking.get(playerName));
         }
 
-        Player admin = Bukkit.getPlayerExact(playersCheckProgress.get(playerName));
+        if(playersCheckProgress.get(playerName) != null) {
+            admin = Bukkit.getPlayerExact(playersCheckProgress.get(playerName));
+        }
+
 
         if(admin != null) {
             sendmessage(color(cfg.getString("player-leave")), admin);
