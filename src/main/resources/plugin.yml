@@ -1,0 +1,12 @@
+name: PrimerChecker
+version: '${project.version}'
+main: ru.primer.mc.Main
+api-version: 1.16
+authors: [ Primer_Legend ]
+commands:
+  check:
+    description: "Проверка игроков на читы"
+  uncheck:
+    description: "Закончить проверку на читы"
+  cheater:
+    description: "Сознаться в читах"
