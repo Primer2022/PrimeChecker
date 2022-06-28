@@ -43,6 +43,8 @@ public class CommandCheck implements CommandExecutor {
                 playersChecking.put(targetName, playerName);
 
                 target.sendTitle(color(cfg.getString("title")), color(cfg.getString("subtitle")), 0, 999999999, 0);
+
+                sendmessage(color(cfg.getString("check-execute-admin").replace("%player%", targetName)), player);
                 schedulerBan(target);
                 return true;
             }

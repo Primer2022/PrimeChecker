@@ -25,20 +25,26 @@ public class PlayerQuit implements Listener {
 
         Player admin = null;
 
+        if(!playersChecking.containsKey(playerName) && !playersCheckProgress.containsKey(playerName)) {
+            return;
+        }
+
         if(playersChecking.get(playerName) != null) {
+            System.out.println(playersChecking.get(playerName));
             admin = Bukkit.getPlayerExact(playersChecking.get(playerName));
         }
 
         if(playersCheckProgress.get(playerName) != null) {
+            System.out.println(playersCheckProgress.get(playerName));
             admin = Bukkit.getPlayerExact(playersCheckProgress.get(playerName));
         }
-
 
         if(admin != null) {
             sendmessage(color(cfg.getString("player-leave")), admin);
         }
 
         playersChecking.remove(playerName);
+        playersCheckProgress.remove(playerName);
 
         List<String> commands = cfg.getStringList("commands");
 
